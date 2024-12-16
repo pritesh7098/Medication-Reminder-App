@@ -8,28 +8,29 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
+  IonIcon,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
+import { logInOutline, personCircleOutline } from 'ionicons/icons';
 import { useState } from "react";
 import { useHistory } from "react-router";
-import { AuthService } from "../services/auth.service";
 import { useAuth } from "../context/AuthContext";
-
+import './Auth.css';  // We'll create this shared CSS file
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  const { login } = useAuth();  // Use the auth context
-
+  const { login } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await login(email, password);  // Use the login function from context
+      const response = await login(email, password);
       console.log("Login successful:", response);
-      
-       // Use history.replace instead of window.location
-       if (response.user.role === "admin") {
+      if (response.user.role === "admin") {
         history.replace('/admin-dashboard');
       } else {
         history.replace('/dashboard');
@@ -38,40 +39,70 @@ const Login: React.FC = () => {
       console.error("Login error:", error);
     }
   };
+
   return (
     <IonPage>
-      <IonContent>
-        <IonCard>
-          <IonCardContent>
-            <form onSubmit={handleLogin}>
-              <IonItem>
-                <IonLabel position="stacked">Email</IonLabel>
-                <IonInput
-                  type="email"
-                  value={email}
-                  onIonChange={(e) => setEmail(e.detail.value!)}
-                  required
-                />
-              </IonItem>
-              <IonItem>
-                <IonLabel position="stacked">Password</IonLabel>
-                <IonInput
-                  type="password"
-                  value={password}
-                  onIonChange={(e) => setPassword(e.detail.value!)}
-                  required
-                />
-              </IonItem>
-              <IonButton
-                expand="block"
-                type="submit"
-                className="ion-margin-top"
-              >
-                Login
-              </IonButton>
-            </form>
-          </IonCardContent>
-        </IonCard>
+      <IonContent className="auth-content">
+        <div className="auth-container">
+          <IonGrid>
+            <IonRow className="ion-justify-content-center">
+              <IonCol size="12" sizeMd="8" sizeLg="6">
+                <IonCard className="auth-card">
+                  <IonCardContent>
+                    <div className="auth-header">
+                      <IonIcon icon={personCircleOutline} className="auth-icon" />
+                      <h1>Welcome Back</h1>
+                      <p>Log in to access your medication dashboard</p>
+                    </div>
+
+                    <form onSubmit={handleLogin} className="auth-form">
+                      <IonItem lines="full">
+                        <IonLabel position="floating">Email</IonLabel>
+                        <IonInput
+                          type="email"
+                          value={email}
+                          onIonChange={(e) => setEmail(e.detail.value!)}
+                          required
+                          className="custom-input"
+                        />
+                      </IonItem>
+
+                      <IonItem lines="full">
+                        <IonLabel position="floating">Password</IonLabel>
+                        <IonInput
+                          type="password"
+                          value={password}
+                          onIonChange={(e) => setPassword(e.detail.value!)}
+                          required
+                          className="custom-input"
+                        />
+                      </IonItem>
+
+                      <IonButton
+                        expand="block"
+                        type="submit"
+                        className="auth-button"
+                      >
+                        Login
+                        <IonIcon slot="end" icon={logInOutline} />
+                      </IonButton>
+
+                      <div className="auth-links">
+                        <IonButton
+                          fill="clear"
+                          onClick={() => history.push('/register')}
+                          className="switch-auth-btn"
+                        >
+                          New user? Create account
+                        </IonButton>
+                      </div>
+                    </form>
+                  </IonCardContent>
+                </IonCard>
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </div>
       </IonContent>
     </IonPage>
   );
