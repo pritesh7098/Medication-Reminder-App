@@ -1,0 +1,145 @@
+/* src/pages/Home.css */
+.hero-section {
+    background: linear-gradient(135deg, #4A90E2 0%, #2C3E50 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .get-started-btn {
+    --background: #2ECC71;
+    --background-hover: #27AE60;
+    font-weight: 600;
+  }
+  
+  .login-btn {
+    --color: white;
+    --border-color: white;
+  }
+  
+  .features-section {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+  }
+  
+  .features-section h2 {
+    text-align: center;
+    color: #2C3E50;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-icon {
+    background: linear-gradient(135deg, #4A90E2 0%, #2C3E50 100%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .feature-icon ion-icon {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .feature-card h3 {
+    color: #2C3E50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .feature-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .cta-section {
+    background: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-section p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  .cta-button {
+    --background: #2ECC71background-hover: #27AE60;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+  
+    .features-section h2,
+    .cta-section h2 {
+      font-size: 2rem;
+    }
+  
+    .feature-card {
+      margin-bottom: 2rem;
+    }
+  }
+  
