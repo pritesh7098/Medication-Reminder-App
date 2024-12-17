@@ -33,21 +33,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, []);
 
-// src/context/AuthContext.tsx
-const login = async (email: string, password: string) => {
-  try {
-    const response = await AuthService.login({ email, password });
-    setUser(response.user);
-    setIsAuthenticated(true);
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('userRole', response.user.role);
-    return response;
-  } catch (error) {
-    console.error('Login error:', error);
-    throw error;
-  }
-};
-
+  // src/context/AuthContext.tsx
+  const login = async (email: string, password: string) => {
+    try {
+      const response = await AuthService.login({ email, password });
+      setUser(response.user);
+      setIsAuthenticated(true);
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("userRole", response.user.role);
+      return response;
+    } catch (error) {
+      console.error("Login error:", error);
+      throw error;
+    }
+  };
 
   const register = async (name: string, email: string, password: string) => {
     const response = await AuthService.register({ name, email, password });

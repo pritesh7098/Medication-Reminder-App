@@ -1,5 +1,5 @@
-// src/pages/AdminRegister.tsx
-import React, { useState } from 'react';
+/* Seprate route for admin reg  */
+import React, { useState } from "react";
 import {
   IonContent,
   IonPage,
@@ -10,54 +10,57 @@ import {
   IonCard,
   IonCardContent,
   useIonAlert,
-} from '@ionic/react';
-import { useHistory } from 'react-router';
+} from "@ionic/react";
+import { useHistory } from "react-router";
 
 const AdminRegister: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [adminSecret, setAdminSecret] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [adminSecret, setAdminSecret] = useState("");
   const history = useHistory();
   const [presentAlert] = useIonAlert();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/auth/register-admin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          adminSecret,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:3000/api/auth/register-admin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            adminSecret,
+          }),
+        }
+      );
 
       const data = await response.json();
 
       if (response.ok) {
         presentAlert({
-          header: 'Success',
-          message: 'Admin registered successfully',
-          buttons: ['OK'],
+          header: "Success",
+          message: "Admin registered successfully",
+          buttons: ["OK"],
         });
-        history.push('/login');
+        history.push("/login");
       } else {
         presentAlert({
-          header: 'Error',
-          message: data.message || 'Registration failed',
-          buttons: ['OK'],
+          header: "Error",
+          message: data.message || "Registration failed",
+          buttons: ["OK"],
         });
       }
     } catch (error) {
       presentAlert({
-        header: 'Error',
-        message: 'Registration failed',
-        buttons: ['OK'],
+        header: "Error",
+        message: "Registration failed",
+        buttons: ["OK"],
       });
     }
   };
@@ -73,7 +76,7 @@ const AdminRegister: React.FC = () => {
                 <IonLabel position="floating">Name</IonLabel>
                 <IonInput
                   value={name}
-                  onIonChange={e => setName(e.detail.value!)}
+                  onIonChange={(e) => setName(e.detail.value!)}
                   required
                 />
               </IonItem>
@@ -83,7 +86,7 @@ const AdminRegister: React.FC = () => {
                 <IonInput
                   type="email"
                   value={email}
-                  onIonChange={e => setEmail(e.detail.value!)}
+                  onIonChange={(e) => setEmail(e.detail.value!)}
                   required
                 />
               </IonItem>
@@ -93,7 +96,7 @@ const AdminRegister: React.FC = () => {
                 <IonInput
                   type="password"
                   value={password}
-                  onIonChange={e => setPassword(e.detail.value!)}
+                  onIonChange={(e) => setPassword(e.detail.value!)}
                   required
                 />
               </IonItem>
@@ -103,7 +106,7 @@ const AdminRegister: React.FC = () => {
                 <IonInput
                   type="password"
                   value={adminSecret}
-                  onIonChange={e => setAdminSecret(e.detail.value!)}
+                  onIonChange={(e) => setAdminSecret(e.detail.value!)}
                   required
                 />
               </IonItem>

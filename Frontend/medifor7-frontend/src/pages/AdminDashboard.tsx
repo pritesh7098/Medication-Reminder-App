@@ -1,5 +1,5 @@
-// src/pages/AdminDashboard.tsx
-import React, { useState, useEffect } from 'react';
+// seorate admin dashboard
+import React, { useState, useEffect } from "react";
 import {
   IonContent,
   IonPage,
@@ -18,8 +18,8 @@ import {
   IonSearchbar,
   useIonAlert,
   IonChip,
-} from '@ionic/react';
-import { format } from 'date-fns';
+} from "@ionic/react";
+import { format } from "date-fns";
 
 interface Log {
   id: number;
@@ -32,9 +32,9 @@ interface Log {
 
 const AdminDashboard: React.FC = () => {
   const [logs, setLogs] = useState<Log[]>([]);
-  const [startDate, setStartDate] = useState<string>('');
-  const [endDate, setEndDate] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [presentAlert] = useIonAlert();
 
   useEffect(() => {
@@ -43,36 +43,36 @@ const AdminDashboard: React.FC = () => {
 
   const fetchLogs = async () => {
     try {
-      const token = localStorage.getItem('token');
-      let url = 'http://localhost:3000/api/acknowledgments/all-logs';
-      
+      const token = localStorage.getItem("token");
+      let url = "http://localhost:3000/api/acknowledgments/all-logs";
+
       // Add query parameters if filters are set
       const params = new URLSearchParams();
-      if (startDate) params.append('startDate', startDate);
-      if (endDate) params.append('endDate', endDate);
-      if (searchTerm) params.append('search', searchTerm);
-      
+      if (startDate) params.append("startDate", startDate);
+      if (endDate) params.append("endDate", endDate);
+      if (searchTerm) params.append("search", searchTerm);
+
       if (params.toString()) {
-        url += `?${params.toString()}`;  // Fixed template literal syntax
+        url += `?${params.toString()}`; // Fixed template literal syntax
       }
 
       const response = await fetch(url, {
         headers: {
-          'Authorization': `Bearer ${token}`,  // Fixed template literal and added quotes
+          Authorization: `Bearer ${token}`, // Fixed template literal and added quotes
         },
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch logs');
+        throw new Error("Failed to fetch logs");
       }
 
       const data = await response.json();
       setLogs(data.data);
     } catch (error) {
       presentAlert({
-        header: 'Error',
-        message: 'Failed to fetch acknowledgment logs',
-        buttons: ['OK'],
+        header: "Error",
+        message: "Failed to fetch acknowledgment logs",
+        buttons: ["OK"],
       });
     }
   };
@@ -82,22 +82,22 @@ const AdminDashboard: React.FC = () => {
   };
 
   const handleReset = () => {
-    setStartDate('');
-    setEndDate('');
-    setSearchTerm('');
+    setStartDate("");
+    setEndDate("");
+    setSearchTerm("");
     fetchLogs();
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'taken':
-        return 'success';
-      case 'missed':
-        return 'danger';
-      case 'skipped':
-        return 'warning';
+      case "taken":
+        return "success";
+      case "missed":
+        return "danger";
+      case "skipped":
+        return "warning";
       default:
-        return 'medium';
+        return "medium";
     }
   };
 
@@ -119,7 +119,7 @@ const AdminDashboard: React.FC = () => {
                     <IonLabel position="stacked">Start Date</IonLabel>
                     <IonDatetime
                       value={startDate}
-                      onIonChange={e => setStartDate(e.detail.value!)}
+                      onIonChange={(e) => setStartDate(e.detail.value!)}
                     />
                   </IonItem>
                 </IonCol>
@@ -128,14 +128,14 @@ const AdminDashboard: React.FC = () => {
                     <IonLabel position="stacked">End Date</IonLabel>
                     <IonDatetime
                       value={endDate}
-                      onIonChange={e => setEndDate(e.detail.value!)}
+                      onIonChange={(e) => setEndDate(e.detail.value!)}
                     />
                   </IonItem>
                 </IonCol>
                 <IonCol size="12" sizeMd="4">
                   <IonSearchbar
                     value={searchTerm}
-                    onIonChange={e => setSearchTerm(e.detail.value!)}
+                    onIonChange={(e) => setSearchTerm(e.detail.value!)}
                     placeholder="Search by patient name"
                   />
                 </IonCol>
@@ -147,7 +147,11 @@ const AdminDashboard: React.FC = () => {
                   </IonButton>
                 </IonCol>
                 <IonCol>
-                  <IonButton expand="block" color="medium" onClick={handleReset}>
+                  <IonButton
+                    expand="block"
+                    color="medium"
+                    onClick={handleReset}
+                  >
                     Reset Filters
                   </IonButton>
                 </IonCol>
@@ -157,7 +161,7 @@ const AdminDashboard: React.FC = () => {
         </IonCard>
 
         <IonGrid>
-          {logs.map(log => (
+          {logs.map((log) => (
             <IonRow key={log.id}>
               <IonCol>
                 <IonCard>
@@ -179,14 +183,14 @@ const AdminDashboard: React.FC = () => {
                           </IonChip>
                         </IonCol>
                         <IonCol size="12" sizeMd="2">
-                          <strong>Time:</strong>{' '}
-                          {format(new Date(log.acknowledged_at), 'PPp')}
+                          <strong>Time:</strong>{" "}
+                          {format(new Date(log.acknowledged_at), "PPp")}
                         </IonCol>
                       </IonRow>
                     </IonGrid>
                   </IonCardContent>
                 </IonCard>
-              </IonCol> 
+              </IonCol>
             </IonRow>
           ))}
         </IonGrid>

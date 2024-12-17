@@ -1,4 +1,4 @@
-// src/pages/Home.tsx
+// Landing page for everyone who visites website.
 import {
   IonContent,
   IonPage,
@@ -7,16 +7,16 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-} from '@ionic/react';
-import { useHistory } from 'react-router';
-import { 
-  timerOutline, 
-  medkitOutline, 
-  peopleOutline, 
+} from "@ionic/react";
+import { useHistory } from "react-router";
+import {
+  timerOutline,
+  medkitOutline,
+  peopleOutline,
   notificationsOutline,
-  checkmarkCircleOutline 
-} from 'ionicons/icons';
-import './Home.css';
+  checkmarkCircleOutline,
+} from "ionicons/icons";
+import "./Home.css";
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -29,20 +29,21 @@ const Home: React.FC = () => {
           <div className="hero-content">
             <h1>Your Personal Medicine Companion</h1>
             <p className="hero-subtitle">
-              Never miss a dose with smart reminders and easy medication tracking
+              Never miss a dose with smart reminders and easy medication
+              tracking
             </p>
             <div className="hero-buttons">
-              <IonButton 
-                size="large" 
+              <IonButton
+                size="large"
                 className="get-started-btn"
                 onClick={() => history.push("/register")}
               >
                 Get Started
                 <IonIcon icon={checkmarkCircleOutline} slot="end" />
               </IonButton>
-              <IonButton 
-                size="large" 
-                fill="outline" 
+              <IonButton
+                size="large"
+                fill="outline"
                 className="login-btn"
                 onClick={() => history.push("/login")}
               >
@@ -66,7 +67,7 @@ const Home: React.FC = () => {
                   <p>Easily manage all your medications in one secure place</p>
                 </div>
               </IonCol>
-              
+
               <IonCol size="12" sizeMd="6" sizeLg="3">
                 <div className="feature-card">
                   <div className="feature-icon">
@@ -103,9 +104,11 @@ const Home: React.FC = () => {
         {/* Call to Action Section */}
         <div className="cta-section">
           <h2>Start Your Health Journey Today</h2>
-          <p>Join thousands who trust MediFor7 for their medication management</p>
-          <IonButton 
-            size="large" 
+          <p>
+            Join thousands who trust MediFor7 for their medication management
+          </p>
+          <IonButton
+            size="large"
             className="cta-button"
             onClick={() => history.push("/register")}
           >

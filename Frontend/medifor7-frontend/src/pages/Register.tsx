@@ -1,4 +1,4 @@
-// src/pages/Register.tsx
+// Register page.
 import {
   IonContent,
   IonPage,
@@ -12,44 +12,44 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-} from '@ionic/react';
-import { personAddOutline, personCircleOutline } from 'ionicons/icons';
-import { useState } from 'react';
-import { useHistory } from 'react-router';
-import './Auth.css';
+} from "@ionic/react";
+import { personAddOutline, personCircleOutline } from "ionicons/icons";
+import { useState } from "react";
+import { useHistory } from "react-router";
+import "./Auth.css";
 
 const Register: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const history = useHistory();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/api/auth/register', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name,
           email,
-          password
-        })
+          password,
+        }),
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
-        console.log('Registration successful:', data);
-        localStorage.setItem('token', data.token);
-        history.push('/login');
+        console.log("Registration successful:", data);
+        localStorage.setItem("token", data.token);
+        history.push("/login");
       } else {
-        console.error('Registration failed:', data.message);
+        console.error("Registration failed:", data.message);
       }
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error("Registration error:", error);
     }
   };
 
@@ -63,7 +63,10 @@ const Register: React.FC = () => {
                 <IonCard className="auth-card">
                   <IonCardContent>
                     <div className="auth-header">
-                      <IonIcon icon={personCircleOutline} className="auth-icon" />
+                      <IonIcon
+                        icon={personCircleOutline}
+                        className="auth-icon"
+                      />
                       <h1>Create Account</h1>
                       <p>Join MediFor7 to start managing your medications</p>
                     </div>
@@ -74,7 +77,7 @@ const Register: React.FC = () => {
                         <IonInput
                           type="text"
                           value={name}
-                          onIonChange={e => setName(e.detail.value!)}
+                          onIonChange={(e) => setName(e.detail.value!)}
                           required
                           className="custom-input"
                         />
@@ -85,7 +88,7 @@ const Register: React.FC = () => {
                         <IonInput
                           type="email"
                           value={email}
-                          onIonChange={e => setEmail(e.detail.value!)}
+                          onIonChange={(e) => setEmail(e.detail.value!)}
                           required
                           className="custom-input"
                         />
@@ -96,7 +99,7 @@ const Register: React.FC = () => {
                         <IonInput
                           type="password"
                           value={password}
-                          onIonChange={e => setPassword(e.detail.value!)}
+                          onIonChange={(e) => setPassword(e.detail.value!)}
                           required
                           className="custom-input"
                         />
@@ -114,7 +117,7 @@ const Register: React.FC = () => {
                       <div className="auth-links">
                         <IonButton
                           fill="clear"
-                          onClick={() => history.push('/login')}
+                          onClick={() => history.push("/login")}
                           className="switch-auth-btn"
                         >
                           Already have an account? Login

@@ -1,4 +1,5 @@
-// src/pages/Login.tsx
+// login page
+
 import {
   IonContent,
   IonPage,
@@ -13,11 +14,11 @@ import {
   IonRow,
   IonCol,
 } from "@ionic/react";
-import { logInOutline, personCircleOutline } from 'ionicons/icons';
+import { logInOutline, personCircleOutline } from "ionicons/icons";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import './Auth.css';  // We'll create this shared CSS file
+import "./Auth.css"; // We'll create this shared CSS file
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -31,9 +32,9 @@ const Login: React.FC = () => {
       const response = await login(email, password);
       console.log("Login successful:", response);
       if (response.user.role === "admin") {
-        history.replace('/admin-dashboard');
+        history.replace("/admin-dashboard");
       } else {
-        history.replace('/dashboard');
+        history.replace("/dashboard");
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -50,7 +51,10 @@ const Login: React.FC = () => {
                 <IonCard className="auth-card">
                   <IonCardContent>
                     <div className="auth-header">
-                      <IonIcon icon={personCircleOutline} className="auth-icon" />
+                      <IonIcon
+                        icon={personCircleOutline}
+                        className="auth-icon"
+                      />
                       <h1>Welcome Back</h1>
                       <p>Log in to access your medication dashboard</p>
                     </div>
@@ -90,7 +94,7 @@ const Login: React.FC = () => {
                       <div className="auth-links">
                         <IonButton
                           fill="clear"
-                          onClick={() => history.push('/register')}
+                          onClick={() => history.push("/register")}
                           className="switch-auth-btn"
                         >
                           New user? Create account

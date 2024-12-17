@@ -1,4 +1,5 @@
-// src/pages/Dashboard.tsx
+// Main Landing page for user.
+
 import React, { useState, useEffect } from "react";
 import {
   IonContent,
