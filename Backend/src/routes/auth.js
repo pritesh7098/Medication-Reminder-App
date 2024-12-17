@@ -1,3 +1,5 @@
+// auth route
+
 const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/authController");
@@ -12,7 +14,12 @@ const {
 router.post("/register", registerValidation, validate, authController.register);
 
 // src/routes/auth.js
-router.post('/register-admin', registerValidation, validate, authController.registerAdmin);
+router.post(
+  "/register-admin",
+  registerValidation,
+  validate,
+  authController.registerAdmin
+);
 
 // Login route
 router.post("/login", loginValidation, validate, authController.login);

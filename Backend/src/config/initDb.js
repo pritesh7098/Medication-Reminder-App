@@ -1,3 +1,5 @@
+// initialized schema for an medifor7 qpp
+
 const pool = require("./database");
 
 const createTables = async () => {

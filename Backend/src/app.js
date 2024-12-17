@@ -1,3 +1,4 @@
+// This is main JS file or we can say that server file where everything is well structured and arranged.
 // src/app.js
 const express = require("express");
 const cors = require("cors");

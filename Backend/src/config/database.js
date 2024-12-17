@@ -12,7 +12,7 @@ const pool = new Pool({
     }
 });
 
-// Test the connection
+// Test the connection for my surity.
 pool.query('SELECT NOW()', (err, res) => {
     if (err) {
         console.error('Error connecting to the database:', err);

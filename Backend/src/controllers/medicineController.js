@@ -14,13 +14,14 @@ const medicineController = {
         });
       }
 
-    /*   /// Validate time format (HH:mm:ss)
+      /*   /// Validate time format (HH:mm:ss)
       const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
       if (!timeRegex.test(schedule_time)) {
         return res.status(400).json({
           message: "Invalid time format. Expected HH:mm:ss",
         });
       } */
+
       // Validate recurring days
       if (!recurring_days.every((day) => day >= 1 && day <= 7)) {
         return res.status(400).json({
