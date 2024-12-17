@@ -2,7 +2,8 @@
 ```markdown
 # MediFor7 API Documentation
 MediFor7 API Documentation
-MediFor7 - Medication Reminder App is a user-friendly web/mobile application designed to help users manage their medication schedules effectively. The application aims to reduce missed doses and improve medication adherence through timely reminders and tracking.
+MediFor7 - Medication Reminder App is a user-friendly web/mobile application designed to help users manage their medication schedules effectively.
+The application aims to reduce missed doses and improve medication adherence through timely reminders and tracking.
 
 
 ## Base URL
@@ -332,6 +333,5 @@ All endpoints may return the following error responses:
 {
   "error": "Internal server error"
 }
-```
 ```
 
