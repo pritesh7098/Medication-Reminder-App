@@ -33,7 +33,7 @@
 }
 
 .auth-header h1 {
-  color: var(--ion-color-dark);
+  color: black;
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
