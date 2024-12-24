@@ -122,7 +122,7 @@ The application will be available at `http://localhost:3000`
 
 ## 📱 API Documentation
 
-Comprehensive API documentation is available through Postman in API_DOCS.README Itself In This Repository For Easy Access Which Has  :
+Comprehensive API documentation is available through Postman in API_DOCS.README File Itself In This Repository For Easy Access Which Has  :
 
 - Authentication endpoints
 - Medication management endpoints
